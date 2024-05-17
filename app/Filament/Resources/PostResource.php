@@ -6,6 +6,7 @@ use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,11 +25,16 @@ class PostResource extends Resource
         return $form
             ->columns(1)
             ->schema([
-                Forms\Components\TextInput::moke('name')
+                Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('content')
                     ->columnSpanFull(),
+                Select::make('categories')
+                    ->relationship('categories', 'name')
+                    ->multiple(),
+                Forms\Components\FileUpload::make('image')
+                    ->image(),
                 Forms\Components\Toggle::make('active')
                     ->required()
             ]);

@@ -24,7 +24,7 @@ class CategoryResource extends Resource
         return $form
             ->columns(1)
             ->schema([
-                Forms\Components\TextInput::moke('name')
+                Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('content')
@@ -38,7 +38,7 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::mate('name')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\ToggleColumn::make('active'),
                 Tables\Columns\TextColumn::make('created_at')
