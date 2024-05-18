@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Filament\Resources\PostResource\RelationManagers\CategoriesRelationManager;
 use App\Models\Post;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -30,9 +31,10 @@ class PostResource extends Resource
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('content')
                     ->columnSpanFull(),
-                Select::make('categories')
-                    ->relationship('categories', 'name')
-                    ->multiple(),
+                // Select::make('categories')
+                //     ->relationship('categories', 'name')
+                //     ->multiple(),
+
                 Forms\Components\FileUpload::make('image')
                     ->image(),
                 Forms\Components\Toggle::make('active')
@@ -74,7 +76,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CategoriesRelationManager::class
         ];
     }
 
