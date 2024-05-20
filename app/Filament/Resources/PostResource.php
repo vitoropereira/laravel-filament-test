@@ -31,9 +31,9 @@ class PostResource extends Resource
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('content')
                     ->columnSpanFull(),
-                Select::make('categories')
-                    ->relationship('categories', 'name')
-                    ->multiple(),
+                // Select::make('categories')
+                //     ->relationship('categories', 'name')
+                //     ->multiple(),
 
                 Forms\Components\FileUpload::make('image')
                     ->image(),
@@ -76,7 +76,7 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // CategoriesRelationManager::class
+            CategoriesRelationManager::class
         ];
     }
 
